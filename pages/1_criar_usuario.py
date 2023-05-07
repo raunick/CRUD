@@ -7,7 +7,7 @@ email = st.empty()
 senha = st.empty()
 
 
-def criar_usuario(nome, email, senha, bio=None, imagem_perfil=None):
+def criar_usuario(nome, email, senha, bio=None, imagem_perfil=None, grupo=1):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
 
@@ -25,9 +25,10 @@ def criar_usuario(nome, email, senha, bio=None, imagem_perfil=None):
             email,
             senha,
             bio,
-            imagem_perfil
-        ) VALUES (?, ?, ?, ?, ?)
-    ''', (nome, email, senha, bio, imagem_perfil))
+            imagem_perfil,
+            grupo_id
+        ) VALUES (?, ?, ?, ?, ?,?)
+    ''', (nome, email, senha, bio, imagem_perfil, grupo))
     conn.commit()
     progress_text = "Seu Usuario esta sendo criado, por favor aguarde:"
     my_bar = st.progress(0, text=progress_text)

@@ -1,21 +1,7 @@
 import sqlite3
 
 # conecte-se ao banco de dados
-conn = sqlite3.connect('database.db')
-
-# crie a tabela de usuários
-conn.execute('''
-CREATE TABLE usuarios (
-  id INTEGER PRIMARY KEY,
-  nome TEXT NOT NULL,
-  email TEXT UNIQUE NOT NULL,
-  senha TEXT NOT NULL,
-  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  alterado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  bio TEXT, -- biografia do usuário
-  imagem_perfil TEXT -- URL da imagem do perfil do usuário
-);
-''')
+conn = sqlite3.connect('db.db')
 
 # crie a tabela de grupos
 conn.execute('''
@@ -41,8 +27,24 @@ CREATE TABLE logs (
 );
 ''')
 
+# crie a tabela de usuários
+conn.execute('''
+CREATE TABLE usuarios (
+  id INTEGER PRIMARY KEY,
+  nome TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  senha TEXT NOT NULL,
+  criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  alterado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  bio TEXT, -- biografia do usuário
+  imagem_perfil TEXT, -- URL da imagem do perfil do usuário
+  grupo_id INTEGER NOT NULL,
+  CONSTRAINT fk_grupo_id FOREIGN KEY (grupo_id) REFERENCES grupos (id)
+);
+''')
+
 # salve as mudanças
 conn.commit()
-
+print('tabels criada com sucesso')
 # feche a conexão com o banco de dados
 conn.close()
