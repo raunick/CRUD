@@ -158,11 +158,11 @@ print(todos_os_usuarios)
 
 # excluir_usuario(1)
 
-#email = 'joao@email.com'
-#senha = '123456'
-#token = gera_chave()
-#token_fake = '558635'
-#login(email, senha, token)
+# email = 'joao@email.com'
+# senha = '123456'
+# token = gera_chave()
+# token_fake = '558635'
+# login(email, senha, token)
 
 
 st.title('Login')
@@ -183,9 +183,6 @@ if st.button('Entrar'):
         st.write('Usuário logado:', resultado)
         # Fechamento da conexão com o banco de dados
         conn.close()
-
-
-
 
 
 # Fechamento da conexão com o banco de dados
