@@ -41,11 +41,13 @@ def criar_usuario(nome, email, senha, bio=None, imagem_perfil=None):
     return True
 
 
-nome = st.text_input('Nome', value='')
-email = st.text_input('E-mail',  value='')
-senha = st.text_input('Senha', type='password', value='')
+st.title('Criar Usuario')
+nome = st.text_input('Nome', value='', key='nome')
+email = st.text_input('E-mail',  value='', key='email')
+senha = st.text_input('Senha', type='password', value='', key='senha')
 # bio = st.text_area('Bio')
-# imagem_perfil = st.file_uploader('Foto de perfil', type=['jpg', 'jpeg', 'png'])
+# imagem_perfil = st.file_uploader('Foto de perfil',
+# type=['jpg', 'jpeg', 'png'])
 
 if st.button('Criar conta'):
     if criar_usuario(nome, email, senha):

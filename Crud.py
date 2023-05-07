@@ -133,7 +133,7 @@ def login(email, senha, token):
     registrar_log(usuario[0])
 
     # Retorna o usuário logado
-    print(usuario)
+    # print(usuario)
     print(totp.verify(token))
     print('logado com sucesso')
     return usuario
@@ -153,7 +153,7 @@ VALUES (?, datetime('now', 'localtime'))
 # usuario = obter_usuario_por_id(1)
 # print(usuario)
 todos_os_usuarios = obter_todos_usuarios()
-print(todos_os_usuarios)
+# print(todos_os_usuarios)
 # atualizar_usuario(1, nome="João da Silva")
 
 # excluir_usuario(1)
